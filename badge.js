@@ -1,5 +1,4 @@
 (function(window) {
-    // Get the current URL
     var url = encodeURIComponent(window.location.href);
     
     var mainDiv = document.createElement('div');
