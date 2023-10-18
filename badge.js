@@ -5,7 +5,8 @@
     mainDiv.className = 'bg-[#F4F4F4] w-fit border-2 border-black mt-6 sm:mt-0';
 
     var firstDiv = document.createElement('div');
-    firstDiv.className = 'flex flexthe image o-row px-6 py-6 sm:flex-col items-center';
+    firstDiv.className = 'flex flex-row px-6 py-6 sm:flex-col items-center';
+
 
     var h4_1 = document.createElement('h4');
     h4_1.className = 'text-sm';
