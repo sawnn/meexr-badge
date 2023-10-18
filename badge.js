@@ -37,7 +37,8 @@
     mainDiv.appendChild(firstDiv);
     mainDiv.appendChild(secondDiv);
 
-    document.body.appendChild(mainDiv);
+    var badgeElement = document.getElementById('meexr-badge');
+    badgeElement.appendChild(mainDiv);
 
   
     var apiEndpoint = 'https://your-backend-service.com/api?u=' + url;
