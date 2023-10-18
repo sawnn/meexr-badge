@@ -7,7 +7,7 @@
 
     // Create the first inner div
     var firstDiv = document.createElement('div');
-    firstDiv.className = 'flex flex-row px-6 py-6 sm:flex-col items-center';
+    firstDiv.className = 'flex flexthe image o-row px-6 py-6 sm:flex-col items-center';
 
     // Create the h4 elements for the first inner div
     var h4_1 = document.createElement('h4');
@@ -32,7 +32,7 @@
     h4_3.textContent = 'Le score Meexr du site est';
 
     var img = document.createElement('img');
-    img.src = './global_audit.svg';
+    img.src = 'https://sawnn.github.io/meexr-badge/global_audit.svg';
     img.alt = '';
     img.className = 'ml-3 sm:ml-0 sm:mt-1';
 
