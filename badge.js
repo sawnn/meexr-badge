@@ -96,9 +96,9 @@ function sendRequest(url, render = true) {
     .then(function(data) {
       if (render) {
         var badgeHTML = getBadgeHTML(data.co2, data.score);
-        //var badgeElement = document.getElementById('meexr-badge');
-        //badgeElement.innerHTML = badgeHTML;
-        document.body.innerHTML = badgeHTML;
+        var badgeElement = document.getElementById('meexr-badge');
+        badgeElement.innerHTML = badgeHTML;
+        //document.body.innerHTML = badgeHTML;
       }
       localStorage.setItem('mxr_' + url, JSON.stringify({t: new Date().getTime(), co2: data.co2, score: data.score}))
       
@@ -172,8 +172,9 @@ function sendRequest(url, render = true) {
 
     // If no cached response, then fetch from API
     } else {
+      var badgeElement = document.getElementById('meexr-badge');
       var badgeHTML = getLoadingBadgeHTML();
-      document.body.innerHTML = badgeHTML;
+      badgeElement.innerHTML = badgeHTML;
       sendRequest(url)
     }
 
