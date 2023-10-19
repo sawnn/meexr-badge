@@ -688,6 +688,10 @@ video {
   margin-left: 0.75rem;
 }
 
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -2455,6 +2459,10 @@ video {
 @media (min-width: 640px) {
   .sm\:ml-0 {
     margin-left: 0px;
+  }
+
+  .sm\:mr-0 {
+    margin-right: 0px;
   }
 
   .sm\:mt-0 {

@@ -43,11 +43,11 @@ function getBadgeHTML(footprint, score) {
     return `
     <div class="bg-[#F4F4F4] w-fit border-2 border-black mt-6 sm:mt-0">
         <div class="flex flex-row px-6 py-6 sm:flex-col items-center">
-            <h4 class="text-sm">Cette page émet</h4>
+            <h4 class="text-sm mr-2 sm:mr-0">Cette page émet</h4>
             <h4 class="text-lg font-bold ml-3 sm:ml-0">${footprint.toFixed(2)} g de CO2e par visite</h4>
         </div>
         <div class="flex flex-row px-6 py-6 pr-6 border-t-2 border-black sm:flex-col items-center">
-            <h4 class="text-sm">Le score Meexr du site est</h4>
+            <h4 class="text-sm mr-2 sm:mr-0">Le score Meexr du site est</h4>
             <div class="flex flex-row">
               <img src=${getIcone(score)} alt="" class="ml-3 sm:ml-0 sm:mt-1 h-[50px] w-[50px]"/>
               <h2 class="text-5xl font-bold px-3 ${getColor(score)}">${getLetter(score)}</h2>
@@ -81,7 +81,7 @@ function getLoadingBadgeHTML() {
 
 
 function sendRequest(url, render = true) {
-  var apiEndpoint = 'https://api.meexr.fr/audits/badge-audit?brand=societech&nbVisits=1&website=www.societech.fr';
+  var apiEndpoint = 'https://api.meexr.fr/audits/badge-audit?brand=societech&nbVisits=1&website=' + url;
   
   fetch(apiEndpoint)
     .then(function(response) {
