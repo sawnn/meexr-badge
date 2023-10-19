@@ -81,7 +81,7 @@ function getLoadingBadgeHTML() {
 
 
 function sendRequest(url, render = true) {
-  var apiEndpoint = 'https://api.meexr.fr/audits/badge-audit?brand=societech&nbVisits=1&website=' + url;
+  var apiEndpoint = 'https://api.meexr.fr/audits/badge-audit?brand=societech&nbVisits=1&website=www.societech.fr';
   
   fetch(apiEndpoint)
     .then(function(response) {
@@ -111,9 +111,6 @@ function sendRequest(url, render = true) {
 
 (function(window) {
     var url = encodeURIComponent(window.location.href);
-
- 
-
 
 
 
