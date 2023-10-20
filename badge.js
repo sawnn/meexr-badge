@@ -112,7 +112,6 @@ function sendRequest(url, render = true) {
     let cachedResponse = localStorage.getItem('mxr_' + url)
     const t = new Date().getTime()
 
-    // If there is a cached response, use it
     if (cachedResponse) {
       cachedResponse = JSON.parse(cachedResponse)
       var badgeHTML = getBadgeHTML(cachedResponse.co2, cachedResponse.score);
@@ -123,7 +122,6 @@ function sendRequest(url, render = true) {
       badgeElement.innerHTML = badgeHTML;
       //document.body.innerHTML = badgeHTML;
 
-    // If no cached response, then fetch from API
     } else {
       var badgeElement = document.getElementById('meexr-badge');
       var badgeHTML = getLoadingBadgeHTML();
