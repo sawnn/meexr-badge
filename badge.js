@@ -15,15 +15,15 @@ const getIcone = (score) => {
 
 const getColor = (score) => {
   if (score < 25) {
-      return "text-scoreRed"
+      return "#E5726B"
   }
   if (score < 50) {
-      return "text-scoreOrange"
+      return "#F6A673"
   }
   if (score < 75) {
-      return "text-scoreBlue"
+      return "#A19FE2"
   }
-  return "text-scoreGreen"
+  return "#68A17E"
 }
 
 const getLetter = (score) => {
@@ -40,48 +40,45 @@ const getLetter = (score) => {
 }
 
 function getBadgeHTML(footprint, score) {
-    return `
-    <div class="bg-[#F4F4F4] w-fit border-2 border-black mt-6 sm:mt-0">
-        <div class="flex flex-row px-6 py-6 sm:flex-col items-center">
-            <h4 class="text-sm mr-2 sm:mr-0">Cette page émet</h4>
-            <h4 class="text-lg font-bold ml-3 sm:ml-0">${footprint.toFixed(2)} g de CO2e par visite</h4>
-        </div>
-        <div class="flex flex-row px-6 py-6 pr-6 border-t-2 border-black sm:flex-col items-center">
-            <h4 class="text-sm mr-2 sm:mr-0">Le score Meexr du site est</h4>
-            <div class="flex flex-row">
-              <img src=${getIcone(score)} alt="" class="ml-3 sm:ml-0 sm:mt-1 h-[50px] w-[50px]"/>
-              <h2 class="text-5xl font-bold px-3 ${getColor(score)}">${getLetter(score)}</h2>
-              <h1 class=" font-bold text-5xl ${getColor(score)}"}>${score}</h1>
-              <h1 class="text-3xl my-auto font-normal ${getColor(score)}">/100pts</h1>
-            </div>
-        </div>
-    </div>
-    `;
-  }
-
-// create a function that return html code that tell user that the badge is being loaded
-
-function getLoadingBadgeHTML() {
   return `
-  <div class="bg-[#F4F4F4] w-fit border-2 border-black mt-6 sm:mt-0">
-      <div class="flex flex-row px-6 py-6 sm:flex-col items-center">
-          <h4 class="text-sm">Loading...</h4>
-          <h4 class="text-lg font-bold ml-3 sm:ml-0">...</h4>
+  <div style="background-color: #F4F4F4; width: fit-content; border: 2px solid black; " >
+      <div style="display: flex; flex-direction: column; padding: 1.5rem; align-items: center;">
+          <h4 style="font-size: 14px; margin: 0; margin-bottom: 10px; font-weight: normal">Cette page émet</h4>
+          <h4 style="font-size: 18px; font-weight: bold; margin: 0;">${footprint.toFixed(2)} g de CO2e par visite</h4>
       </div>
-      <div class="flex flex-row px-6 py-6 pr-6 border-t-2 border-black sm:flex-col items-center">
-          <h4 class="text-sm">Loading...</h4>
-          <div class="flex flex-row">
-            <h2 class=" font-bold px-3">...</h2>
-
+      <div style="display: flex; flex-direction: column; padding: 1.5rem; border-top: 2px solid black; align-items: center;">
+          <h4 style="font-size: 0.875rem; margin: 0; font-weight: normal">Le score Meexr du site est</h4>
+          <div style="display: flex; flex-direction: row; margin-top:8px;">
+            <img src=${getIcone(score)} alt="" style=" margin: 0; height: 30px; width: 30px;"/>
+            <h2 style="font-size: 30px; margin: 0; margin-top: auto; margin-right: 8px; font-weight: bold; padding-left: 8px; color: ${getColor(score)};">${getLetter(score)}</h2>
+            <h1 style="font-weight: bold; margin: 0; margin-top: auto; font-size: 22px; margin-bottom: 2px; color: ${getColor(score)};">${score}</h1>
+            <h1 style="font-size: 13px; margin: 0; margin-top: auto; font-weight: normal; margin-bottom: 6px; color: ${getColor(score)};">/100pts</h1>
           </div>
       </div>
   </div>
   `;
-}   
+}
+
+
+
+function getLoadingBadgeHTML() {
+  return `
+  <div style="background-color: #F4F4F4; width: fit-content; border: 2px solid black; margin-top: 1.5rem;">
+      <div style="display: flex; flex-direction: row; padding: 1.5rem; align-items: center;">
+          <h4 style="font-size: 0.875rem; margin: 0;">Loading...</h4>
+      </div>
+      <div style="display: flex; flex-direction: row; padding: 1.5rem; border-top: 2px solid black; align-items: center;">
+          <h4 style="font-size: 0.875rem; margin: 0;">Loading...</h4>
+
+      </div>
+  </div>
+  `;
+}
+
 
 
 function sendRequest(url, render = true) {
-  var apiEndpoint = 'https://api.meexr.fr/audits/badge-audit?brand=societech&nbVisits=1&website=www.societech.fr';
+  var apiEndpoint = 'https://api.meexr.fr/audits/badge-audit?brand=societech&nbVisits=1&website=' + url;
   
   fetch(apiEndpoint)
     .then(function(response) {
@@ -112,47 +109,6 @@ function sendRequest(url, render = true) {
 (function(window) {
     var url = encodeURIComponent(window.location.href);
 
-
-
-    /*var mainDiv = document.createElement('div');
-    mainDiv.className = 'bg-[#F4F4F4] w-fit border-2 border-black mt-6 sm:mt-0';
-
-    var firstDiv = document.createElement('div');
-    firstDiv.className = 'flex flex-row px-6 py-6 sm:flex-col items-center';
-
-
-    var h4_1 = document.createElement('h4');
-    h4_1.className = 'text-sm';
-    h4_1.textContent = 'Cette page émet';
-
-    var h4_2 = document.createElement('h4');
-    h4_2.className = 'text-lg font-bold ml-3 sm:ml-0';
-    h4_2.textContent = '1,56 g de CO2e';
-
-    firstDiv.appendChild(h4_1);
-    firstDiv.appendChild(h4_2);
-
-    var secondDiv = document.createElement('div');
-    secondDiv.className = 'flex flex-row px-6 py-6 pr-6 border-t-2 border-black sm:flex-col items-center';
-
-    var h4_3 = document.createElement('h4');
-    h4_3.className = 'text-sm';
-    h4_3.textContent = 'Le score Meexr du site est';
-
-    var img = document.createElement('img');
-    img.src = 'https://sawnn.github.io/meexr-badge/global_audit.svg';
-    img.alt = '';
-    img.className = 'ml-3 sm:ml-0 sm:mt-1';
-
-    secondDiv.appendChild(h4_3);
-    secondDiv.appendChild(img);
-
-    mainDiv.appendChild(firstDiv);
-    mainDiv.appendChild(secondDiv);*/
-
-    //var badgeElement = document.getElementById('meexr-badge');
-    //badgeElement.appendChild(mainDiv);
-    //document.body.appendChild(mainDiv);
     let cachedResponse = localStorage.getItem('mxr_' + url)
     const t = new Date().getTime()
 
